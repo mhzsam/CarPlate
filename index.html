@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    />
+    <title>Car Plate MiniApp</title>
+
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            direction: rtl
+        }
+
+        .hidden {
+            display: none
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+
+        }
+
+        /* ===== PLATE ===== */
+
+        .plate {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            background: #fff;
+            border: 3px solid #000;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 90px;
+            width: 420px;
+            direction: ltr
+        }
+
+        /* ===== BLUE SECTION ===== */
+
+        .blue-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            background: #003399;
+            color: #fff;
+            border-right: 2px solid #000;
+            padding: 4px;
+            gap: 3px
+        }
+
+        .flag-css {
+            width: 36px;
+            height: 22px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border-radius: 2px;
+            border: 1px solid rgba(255, 255, 255, 0.4)
+        }
+
+        .flag-green {
+            flex: 1;
+            background: #239f40
+        }
+
+        .flag-white {
+            flex: 1;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .flag-red {
+            flex: 1;
+            background: #da0000
+        }
+
+        .flag-emblem {
+            font-size: 8px;
+            color: #cc0000
+        }
+
+        .ir-iran {
+            font-size: 9px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.3
+        }
+
+        /* ===== CENTER ===== */
+
+        .center-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            direction: rtl
+        }
+
+        .num-input {
+            border: none;
+            text-align: center;
+            font-size: 38px;
+            font-weight: bold;
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+            outline: none;
+            background: transparent
+        }
+
+        #n1 {
+            width: 80px
+        }
+
+        #n2 {
+            width: 95px
+        }
+
+        .char-select {
+            width: 65px;
+            border: none;
+            border-right: 2px solid #000;
+            border-left: 2px solid #000;
+            text-align: center;
+            font-size: 34px;
+            font-weight: bold;
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+            background: transparent;
+            outline: none;
+            height: 100%;
+            appearance: none
+        }
+
+        /* ===== RIGHT SECTION ===== */
+
+        .right-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            border-left: 2px solid #000
+        }
+
+        .iran-text {
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+            font-size: 14px;
+            font-weight: bold
+        }
+
+        .city-input {
+            width: 55px;
+            border: none;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+            outline: none;
+            background: transparent
+        }
+
+        /* ===== BUTTON ===== */
+
+        button {
+            display: block;
+            margin: 25px auto 0 auto;
+            padding: 12px 30px;
+            border: none;
+            background: #007bff;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #0056b3
+        }
+
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+            color: red
+        }
+    </style>
+</head>
+
+<body>
+
+    <div
+        id="app"
+        class="hidden"
+    >
+
+        <div class="title">لطفا پلاک خودرو را وارد کنید</div>
+
+        <div class="plate">
+
+            <div class="blue-section">
+
+                <div class="flag-css">
+                    <div class="flag-green"></div>
+                    <div class="flag-white">
+                        <div class="flag-emblem">الله</div>
+                    </div>
+                    <div class="flag-red"></div>
+                </div>
+
+                <div class="ir-iran">I.R.<br>IRAN</div>
+
+            </div>
+
+            <div class="center-section">
+
+                <input
+                    id="n2"
+                    class="num-input"
+                    maxlength="3"
+                    placeholder="۳۴۵"
+                    inputmode="numeric"
+                >
+
+                <select
+                    id="ch"
+                    class="char-select"
+                >
+                    <option value="">_</option>
+                    <option>ب</option>
+                    <option>پ</option>
+                    <option>ت</option>
+                    <option>ث</option>
+                    <option>ج</option>
+                    <option>د</option>
+                    <option>ذ</option>
+                    <option>ر</option>
+                    <option>ز</option>
+                    <option>س</option>
+                    <option>ش</option>
+                    <option>ص</option>
+                    <option>ط</option>
+                    <option>ع</option>
+                    <option>ف</option>
+                    <option>ق</option>
+                    <option>ک</option>
+                    <option>گ</option>
+                    <option>ل</option>
+                    <option>م</option>
+                    <option>ن</option>
+                    <option>و</option>
+                    <option>ه</option>
+                    <option>ی</option>
+                </select>
+
+                <input
+                    id="n1"
+                    class="num-input"
+                    maxlength="2"
+                    placeholder="۱۲"
+                    inputmode="numeric"
+                >
+
+            </div>
+
+            <div class="right-section">
+
+                <div class="iran-text">ایران</div>
+
+                <input
+                    id="city"
+                    class="city-input"
+                    maxlength="2"
+                    placeholder="۱۱"
+                    inputmode="numeric"
+                >
+
+            </div>
+
+        </div>
+
+        <button onclick="submitPlate()">ارسال</button>
+
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+
+        const isDebug = false
+
+        function isBale() {
+            return window?.Bale?.WebApp
+        }
+
+        const app = document.getElementById("app")
+        const result = document.getElementById("result")
+
+        if (isBale() || isDebug) {
+
+            if (!isDebug) {
+                window.Bale.WebApp.ready()
+            }
+
+            app.classList.remove("hidden")
+
+        } else {
+
+            result.innerText = "این صفحه فقط داخل پیام‌رسان بله قابل استفاده است"
+
+        }
+
+        /* ===== digit conversion ===== */
+
+        const faDigits = "۰۱۲۳۴۵۶۷۸۹"
+
+        function toFa(num) {
+            return num.replace(/[0-9]/g, d => faDigits[d])
+        }
+
+        function toEn(num) {
+            return num.replace(/[۰-۹]/g, d => faDigits.indexOf(d))
+        }
+
+        function onlyDigits(v) {
+            return v.replace(/[^0-9۰-۹]/g, "")
+        }
+
+        /* ===== inputs ===== */
+
+        const n1 = document.getElementById("n1")
+        const n2 = document.getElementById("n2")
+        const city = document.getElementById("city")
+
+            ;[n1, n2, city].forEach(input => {
+
+                input.addEventListener("input", e => {
+
+                    let val = onlyDigits(e.target.value)
+
+                    val = toFa(toEn(val))
+
+                    e.target.value = val
+
+                })
+
+            })
+
+        /* ===== submit ===== */
+
+        function submitPlate() {
+
+            if (!isBale() && !isDebug) return
+
+            const v1 = toEn(n1.value.trim())
+            const v2 = toEn(n2.value.trim())
+            const vCity = toEn(city.value.trim())
+            const ch = document.getElementById("ch").value
+
+            if (v1.length !== 2 || v2.length !== 3 || vCity.length !== 2 || !ch) {
+
+                result.innerText = "❌ همه فیلدها را کامل وارد کنید"
+                return
+
+            }
+
+            const plate = v1 + "-" + ch + "-" + v2 + "-" + vCity
+
+            if (isBale()) {
+                console.log("PLATE:", plate)
+                window.Bale.WebApp.sendData(plate)
+                window.Bale.WebApp.close()
+
+            } else {
+
+
+                result.innerText = "این صفحه فقط داخل پیام‌رسان بله قابل استفاده است"
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
